@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WelcomePage</title>
+</head>
+<body>
+    <div>
+        <label for="subject">Subject:</label>
+        <select name="subject" required>
+            <option value="" disabled selected hidden>Choose a Subject</option>
+            <option value ="adMath">Advanced Maths</option>
+            <option value ="ext2Math">Maths Ext 2</option>
+            <option value ="ext1Math">Maths Ext 1 </option>
+            <option value ="ESL">English (ESL)</option>
+            <option value ="stanEng">English (Standard)</option>
+            <option value ="adEng">English (Advanced)</option>
+        </select>
+
+        <label for="year">Year:</label>
+        <select name="year" required>
+            <option value="" disabled selected hidden>Choose a Year</option>
+            <option value ="2019">2019</option>
+            <option value ="2018">2018</option>
+            <option value ="2017">2017</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="check">I agree to the terms and conditions</label> 
+        <input id="check" type="checkbox">
+    </div>
+
+    <button>Submit</button>
+    
+</body>
+</html>
