@@ -51,11 +51,11 @@ for i in range(10):
     temp = Sanitizer()
     sanitizers.append(temp)
 
-#people = []
+people = []
 
-#for i in range(10):
-#    temp = Citizen()
-#    people.append(temp)
+for i in range(10):
+    temp = Citizen()
+    people.append(temp)
 
 # Main loop
 running = True
@@ -114,29 +114,20 @@ while running:
     elif player.y >= 568:
         player.y = 568
 
-    #i = 0
-    #while i < 10:
-    #    people[i].x += people[i].xChange
-    #    if people[i].x <= 0:
-    #        people[i].xChange = 0.4
-    #        people[i].y += people[i].yChange
+    i = 0
+    while i < 10:
+        people[i].x += people[i].xChange
+        if people[i].x <= 0:
+            people[i].xChange = 0.4
+            people[i].y += people[i].yChange
 
-    #    elif people[i].x >= 768:
-    #        people[i].xChange = -0.4
-    #        people[i].y += people[i].yChange
+        elif people[i].x >= 768:
+            people[i].xChange = -0.4
+            people[i].y += people[i].yChange
 
-    #    people[i].draw_citizen(screen)
+        people[i].draw_citizen(screen)
 
-    # Do the same for the citizen
-    citizen.x += citizen.xChange
-
-    if citizen.x <= 0:
-        citizen.xChange = 0.4
-        citizen.y += citizen.yChange
-
-    elif citizen.x >= 768:
-        citizen.xChange = -0.4
-        citizen.y += citizen.yChange
+        i += 1
 
     # Keep drawing the characters
     player.draw_player(screen)
