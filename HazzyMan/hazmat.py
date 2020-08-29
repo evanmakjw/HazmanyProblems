@@ -33,7 +33,7 @@ pygame.display.set_icon(icon)
 player = Hazman()
 citizen = Citizen()
 
-#Other locations
+# Other locations
 playground = Playground()
 school = School()
 
@@ -107,8 +107,8 @@ while running:
     player.y += player.yChange
     player.rect.x += player.xChange
     player.rect.y += player.yChange
-    
-    # Establish boundaries
+
+    # Establish boundaries for the player
     if player.x <= 0:
         player.x = 0
         player.rect.x = 0
@@ -125,6 +125,7 @@ while running:
         player.y = 568
         player.rect.y = 568
 
+    # Do the same for citizen
     i = 0
     while i < 10:
         people[i].x += people[i].xChange
@@ -140,7 +141,7 @@ while running:
 
         i += 1
 
-    # Keep drawing the characters
+    # Keep drawing the player
     player.draw_player(screen)
 
     # Uncomment if
