@@ -5,6 +5,8 @@ from environment import (
     Tree,
     Sanitizer
 )
+from hazman import Hazman
+from citizen import Citizen
 
 # Initialize the pygame
 pygame.init()
@@ -20,20 +22,11 @@ pygame.display.set_caption("Hazzy Man")
 icon = pygame.image.load("hazmat.png")
 pygame.display.set_icon(icon)
 
-# Player
-playerIcon = pygame.image.load("player.png")
-playerX = 370
-playerY = 480
-playerX_change = 0
-playerY_change = 0
+# Create player and citizen
+player = Hazman()
+citizen = Citizen()
 
-# Citizen
-citizenIcon = pygame.image.load("walk.png")
-citizenX = random.randint(0, 800)
-citizenY = random.randint(50, 150)
-citizenX_change = 0.4
-citizenY_change = 10
-
+# Create other interactable objects
 masks = []
 
 for i in range(10):
@@ -51,21 +44,6 @@ sanitizers = []
 for i in range(10):
     temp = Sanitizer()
     sanitizers.append(temp)
-
-
-def player(x, y):
-
-    # Draw image of player
-    screen.blit(playerIcon, (x, y))
-
-def citizen(x, y):
-
-    # Draw image of player
-    screen.blit(citizenIcon, (x, y))
-
-#def mask(x, y):
-
-#    screen.blit(maskIcon, (x, y))
 
 # Main loop
 running = True
@@ -86,51 +64,52 @@ while running:
 
             # Move left
             if event.key == pygame.K_LEFT:
-                playerX_change = -1
+                player.xChange = -1
 
             # Move right
             elif event.key == pygame.K_RIGHT:
-                playerX_change = 1
+                player.xChange = 1
 
-            # Move left
+            # Move up
             elif event.key == pygame.K_UP:
-                playerY_change = -1
+                player.yChange = -1
 
-            # Move left
+            # Move down
             elif event.key == pygame.K_DOWN:
-                playerY_change = 1
+                player.yChange = 1
         
         # Stop moving the player
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                playerX_change = 0
+                player.xChange = 0
             if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
-                playerY_change = 0
+                player.yChange = 0
     
     # Update player positon
-    playerX += playerX_change
-    playerY += playerY_change
+    player.x += player.xChange
+    player.y += player.yChange
 
     # Establish boundaries
-    if playerX <= 0:
-        playerX = 0
+    if player.x <= 0:
+        player.x = 0
 
-    elif playerX >= 768:
-        playerX = 768
+    elif player.x >= 768:
+        player.x = 768
 
     # Do the same for the citizen
-    citizenX += citizenX_change
+    citizen.x += citizen.xChange
 
-    if citizenX <= 0:
-        citizenX_change = 0.4
-        citizenY += citizenY_change
+    if citizen.x <= 0:
+        citizen.xChange = 0.4
+        citizen.y += citizen.yChange
 
-    elif citizenX >= 768:
-        citizenX_change = -0.4
-        citizenY += citizenY_change
+    elif citizen.x >= 768:
+        citizen.xChange = -0.4
+        citizen.y += citizen.yChange
 
-    player(playerX, playerY)
-    citizen(citizenX, citizenY)
+    # Keep drawing the characters
+    player.draw_player(screen)
+    citizen.draw_citizen(screen)
 
     i = 0
     while i < len(masks):
