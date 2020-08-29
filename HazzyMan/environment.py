@@ -51,10 +51,10 @@ class Playground:
 class School:
 
     def __init__(self):
-        self.x = 650
-        self.y = 400
-        self.iconCont = pygame.image.load("school_c.png")
-        self.iconNonCont = pygame.image.load("school_nc.png")
+        self.x = 50
+        self.y = 40
+        self.iconCont = pygame.image.load("school_C.png")
+        self.iconNonCont = pygame.image.load("school_NC.png")
         self.infected = False
 
     def drawSchool(self, screen):
