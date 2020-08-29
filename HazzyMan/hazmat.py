@@ -4,7 +4,8 @@ from environment import (
     Mask,
     Tree,
     Sanitizer,
-    Playground
+    Playground,
+    School
 )
 from hazman import Hazman
 from citizen import Citizen
@@ -27,8 +28,9 @@ pygame.display.set_icon(icon)
 player = Hazman()
 citizen = Citizen()
 
-#Create playground
+#Other locations
 playground = Playground()
+school = School()
 
 # Create other interactable objects
 masks = []
@@ -158,7 +160,9 @@ while running:
         sanitizers[i].drawSanitizer(screen)
         i += 1
 
+    # Display other locations
     playground.drawPlayground(screen)
+    school.drawSchool(screen)
 
 
     # Always update your screen

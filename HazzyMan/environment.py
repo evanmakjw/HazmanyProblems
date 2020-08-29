@@ -51,8 +51,8 @@ class Playground:
 class School:
     
     def __init__(self):
-        self.x = 60
-        self.y = 80
+        self.x = 650
+        self.y = 400
         self.iconCont = pygame.image.load("school_c.png")
         self.iconNonCont = pygame.image.load("school_nc.png")
         self.infected = False
