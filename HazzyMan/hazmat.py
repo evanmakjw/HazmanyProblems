@@ -150,6 +150,10 @@ while running:
     # if player.x in range(playground.x - 10, playground.x + 10):
         playground.infected = True
 
+    if player.rect.colliderect(school.rect):
+    # if player.x in range(playground.x - 10, playground.x + 10):
+        school.infected = True
+
     i = 0
     while i < len(masks):
         masks[i].drawMask(screen)
