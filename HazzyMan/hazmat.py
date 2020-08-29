@@ -65,7 +65,7 @@ people = []
 numInfected = 1
 numCitizens = 30
 
-nonInfectedCitizens = []
+# Get list of infected and non infected citizen objects
 while len(people) < numCitizens:
     if len(people) < numInfected:
         people.append(Citizen(True))
@@ -74,9 +74,6 @@ while len(people) < numCitizens:
 
 print(people[0].infected)
 print(people[1].infected)
-# for i in range(30):
-#     temp = Citizen()
-#     people.append(temp)
 
 # Main loop
 running = True
@@ -119,12 +116,16 @@ while running:
                 player.yChange = 0
 
 
-    #Testing whether player bumps tree and if not move the player
+    # Update the player's collision field
     player.rect.x += player.xChange
     player.rect.y += player.yChange
+
+    # Check if no collision occurs
     if player.rect.collidelist(treeColideArr) == -1:
         player.x += player.xChange
         player.y += player.yChange
+
+    # If a collision occurs, move the player back
     else:
         player.rect.x -= player.xChange
         player.rect.y -= player.yChange
@@ -146,33 +147,19 @@ while running:
         player.y = 568
         player.rect.y = 568
 
-    # Do the same for citizen
-    #i = 0
-    #while i < 10:
-    #    people[i].x += people[i].xChange
-    #    if people[i].x <= 0:
-    #        people[i].xChange = 0.4
-    #        people[i].y += people[i].yChange
-
-    #    elif people[i].x >= 768:
-    #        people[i].xChange = -0.4
-    #        people[i].y += people[i].yChange
-
-    #    people[i].draw_citizen(screen)
-
-    #    i += 1
-
     path = ["up", "down", "right", "left"]
 
     # For each citizen
     i = 0
     while i < len(people):
 
+        # Change direction randomly after 100 pixels
         if people[i].distanceTravelled > 100:
             chance = random.choice(path)
             people[i].direction = chance
             people[i].distanceTravelled = 0
 
+        # Change direction status appropriately
         if people[i].direction == "right":
             people[i].xChange = 1
             people[i].yChange = 0
@@ -186,25 +173,18 @@ while running:
             people[i].yChange = 1
             people[i].xChange = 0
 
+        # Update citizens' collision field
         people[i].rect.x += people[i].xChange
         people[i].rect.y += people[i].yChange
+
+        # Account for normal movement of citizens
         if people[i].rect.collidelist(treeColideArr) == -1:
             people[i].distanceTravelled += abs(people[i].xChange)
             people[i].distanceTravelled += abs(people[i].yChange)
             people[i].x += people[i].xChange
             people[i].y += people[i].yChange
-        elif people[i].rect.x <= 0:
-             people[i].x = 0
-             people[i].rect.x = 0
-        elif people[i].x >= 768:
-            people[i].x = 768
-            people[i].x = 768
-        elif people[i].rect.y <= 0:
-            people[i].y = 0
-            people[i].rect.y = 0
-        elif people[i].y >= 568:
-            people[i].y = 568
-            people[i].y = 568
+
+        # Citizens collide with tree
         else:
             people[i].rect.x -= people[i].xChange
             people[i].rect.y -= people[i].yChange
@@ -224,21 +204,7 @@ while running:
 
             elif people[i].infected == False: 
                 if people[i].masked == False and people[contactIndex].infected == True and people[contactIndex].masked == False:
-                    people[i].infected = True;
-
-            # else:
-        # people[i].distanceTravelled += abs(people[i].xChange)
-        # people[i].distanceTravelled += abs(people[i].yChange)
-
-
-
-        # people[i].x += people[i].xChange
-        # people[i].y += people[i].yChange
-        # people[i].rect.x += people[i].xChange
-        # people[i].rect.y += people[i].yChange
-
-        # if i is 0:
-            # print(str(people[i].x) +" "+ str(people[i].y)+" "+str(people[i].rect.x)+" "+str(people[i].rect.y))
+                    people[i].infected = True
 
         people[i].draw_citizen(screen)
 
