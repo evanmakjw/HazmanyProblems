@@ -107,6 +107,7 @@ while running:
     player.y += player.yChange
     player.rect.x += player.xChange
     player.rect.y += player.yChange
+    
     # Establish boundaries
     if player.x <= 0:
         player.x = 0
