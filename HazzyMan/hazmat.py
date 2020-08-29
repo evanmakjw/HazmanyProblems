@@ -10,6 +10,10 @@ from environment import (
 from hazman import Hazman
 from citizen import Citizen
 
+
+treeycor = [100, 200]
+treexcor = [100, 200]
+
 # Initialize the pygame
 pygame.init()
 
@@ -41,8 +45,8 @@ for i in range(10):
 
 trees = []
 
-for i in range(70):
-    temp = Tree()
+for i in range(len(treexcor)):
+    temp = Tree(treexcor[i], treeycor[i])
     trees.append(temp)
 
 sanitizers = []
@@ -89,14 +93,14 @@ while running:
             # Move down
             elif event.key == pygame.K_DOWN:
                 player.yChange = 1
-        
+
         # Stop moving the player
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 player.xChange = 0
             if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                 player.yChange = 0
-    
+
     # Update player positon
     player.x += player.xChange
     player.y += player.yChange
