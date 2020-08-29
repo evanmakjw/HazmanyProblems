@@ -253,6 +253,15 @@ while running:
 
         i += 1
 
+    i = 0
+    while i < len(people):
+        if people[i].rect.colliderect(player.rect):
+            if player.maskCount > 0:
+                player.maskCount -= 1
+                people[i].infected = False
+                people[i].draw_citizen(screen)
+        i += 1
+
     # Display other locations
     playground.drawPlayground(screen)
     school.drawSchool(screen)
