@@ -3,6 +3,7 @@ class Hazman():
         self.maskCount = 0
         self.sanitizerCount = 0
 
+
     def give_mask(self):
         self.maskCount -= 1; 
         print("{0} masks left".format(self.maskCount) )
