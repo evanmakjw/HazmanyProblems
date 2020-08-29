@@ -24,7 +24,7 @@ pygame.display.set_icon(icon)
 
 # Create player and citizen
 player = Hazman()
-#citizen = Citizen()
+citizen = Citizen()
 
 # Create other interactable objects
 masks = []
@@ -45,11 +45,11 @@ for i in range(10):
     temp = Sanitizer()
     sanitizers.append(temp)
 
-people = []
+#people = []
 
-for i in range(10):
-    temp = Citizen()
-    people.append(temp)
+#for i in range(10):
+#    temp = Citizen()
+#    people.append(temp)
 
 # Main loop
 running = True
@@ -108,16 +108,18 @@ while running:
     elif player.y >= 568:
         player.y = 568
 
-    i = 0
-    while i < 10:
-        people[i].x += people[i].xChange
-        if people[i].x <= 0:
-            people[i].xChange = 0.4
-            people[i].y += citizen.yChange
+    #i = 0
+    #while i < 10:
+    #    people[i].x += people[i].xChange
+    #    if people[i].x <= 0:
+    #        people[i].xChange = 0.4
+    #        people[i].y += people[i].yChange
 
-        elif citizen.x >= 768:
-            citizen.xChange = -0.4
-            citizen.y += citizen.yChange
+    #    elif people[i].x >= 768:
+    #        people[i].xChange = -0.4
+    #        people[i].y += people[i].yChange
+
+    #    people[i].draw_citizen(screen)
 
     # Do the same for the citizen
     citizen.x += citizen.xChange
