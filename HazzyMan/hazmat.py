@@ -7,6 +7,7 @@ from environment import (
 )
 from hazman import Hazman
 from citizen import Citizen
+
 import os
 
 current_path = os.path.dirname(__file__) + "/"
@@ -18,10 +19,10 @@ pygame.init()
 screen = pygame.display.set_mode((800, 600))
 
 # Background
-background = pygame.image.load(current_path+"ground.png")
+background = pygame.image.load("ground.png")
 
 # Title & Icon
-pygame.display.set_caption("Hazzy Man")
+pygame.display.set_caption("HazmanyProblems")
 icon = pygame.image.load(current_path+"hazmat.png")
 pygame.display.set_icon(icon)
 
