@@ -43,7 +43,7 @@ class Playground:
         self.iconCont = pygame.image.load("playground_c.png")
         self.iconNonCont = pygame.image.load("playground_nc.png")
         self.infected = False
-        self.rect = pygame.Rect(self.x, self.y, 108, 100)
+        self.rect = pygame.Rect(self.x, self.y, 100, 90)
 
     def drawPlayground(self, screen):
         if self.infected is False:
@@ -60,7 +60,7 @@ class School:
         self.iconCont = pygame.image.load("school_C.png")
         self.iconNonCont = pygame.image.load("school_NC.png")
         self.infected = False
-        self.rect = pygame.Rect(self.x, self.y, 140, 130)
+        self.rect = pygame.Rect(self.x, self.y, 130, 120)
 
     def drawSchool(self, screen):
         if self.infected == False:
