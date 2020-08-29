@@ -62,7 +62,7 @@ for i in range(10):
 
 people = []
 
-for i in range(10):
+for i in range(50):
     temp = Citizen()
     people.append(temp)
 
@@ -135,16 +135,51 @@ while running:
         player.rect.y = 568
 
     # Do the same for citizen
-    i = 0
-    while i < 10:
-        people[i].x += people[i].xChange
-        if people[i].x <= 0:
-            people[i].xChange = 0.4
-            people[i].y += people[i].yChange
+    #i = 0
+    #while i < 10:
+    #    people[i].x += people[i].xChange
+    #    if people[i].x <= 0:
+    #        people[i].xChange = 0.4
+    #        people[i].y += people[i].yChange
 
-        elif people[i].x >= 768:
+    #    elif people[i].x >= 768:
+    #        people[i].xChange = -0.4
+    #        people[i].y += people[i].yChange
+
+    #    people[i].draw_citizen(screen)
+
+    #    i += 1
+
+    path = ["up", "down", "right", "left"]
+
+    # For each citizen
+    i = 0
+    while i < len(people):
+
+        if people[i].distanceTravelled > 30:
+            chance = random.randint(0, 3)
+            people[i].direction = path[chance]
+            people[i].distanceTravelled = 0
+
+        if people[i].direction == "right":
+            people[i].xChange = 0.4
+            people[i].yChange = 0
+        elif people[i].direction == "left":
             people[i].xChange = -0.4
-            people[i].y += people[i].yChange
+            people[i].yChange = 0
+        elif people[i].direction == "up":
+            people[i].yChange = -0.4
+            people[i].xChange = 0
+        elif people[i].direction == "down":
+            people[i].yChange = 0.4
+            people[i].xChange = 0
+            
+        people[i].distanceTravelled += abs(people[i].xChange)
+        people[i].distanceTravelled += abs(people[i].yChange)
+
+
+        people[i].x += people[i].xChange
+        people[i].y += people[i].yChange
 
         people[i].draw_citizen(screen)
 

@@ -11,6 +11,8 @@ class Citizen:
         self.y = random.randint(0, 600)
         self.xChange = 0.4
         self.yChange = 10
+        self.distanceTravelled = 0
+        self.direction = "right"
 
     def draw_citizen(self, screen):
 
