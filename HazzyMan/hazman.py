@@ -29,7 +29,7 @@ class Hazman():
         print("{0} masks left".format(self.maskCount) )
 
     def give_sanitizer(self):
-        self.sanitizerCount -= 1; 
+        self.sanitizerCount -= 1 
         
     def give_supplies(self, target):
         if self.maskCount > 0:
@@ -46,7 +46,7 @@ class Hazman():
     def pick_up_masks(self):
         self.maskCount += 5 
 
-    def pick_up_sanitiser(self):
+    def pick_up_sanitizer(self):
         self.sanitizerCount+= 5
 
     def clean_object(self, obj):
