@@ -208,6 +208,12 @@ while running:
 
         people[i].draw_citizen(screen)
 
+        #If people collide with the playground or school
+        if people[i].rect.colliderect(playground.rect) and people[i].infected is True:
+            playground.infected = True
+        if people[i].rect.colliderect(school.rect) and people[i].infected is True:
+            school.infected = True
+
         i += 1
 
     # Keep drawing the player
@@ -215,10 +221,10 @@ while running:
 
     # If player collides with locations
     if player.rect.colliderect(playground.rect):
-        playground.infected = True
+        playground.infected = False
 
     if player.rect.colliderect(school.rect):
-        school.infected = True
+        school.infected = False
 
 
     i = 0
