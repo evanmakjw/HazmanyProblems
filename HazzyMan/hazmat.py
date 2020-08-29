@@ -62,7 +62,7 @@ for i in range(10):
 
 people = []
 
-for i in range(50):
+for i in range(30):
     temp = Citizen()
     people.append(temp)
 
@@ -110,7 +110,7 @@ while running:
     #Testing whether player bumps tree and if not move the player
     player.rect.x += player.xChange
     player.rect.y += player.yChange
-    if player.rect.collidelist(treeColideArr) is -1:
+    if player.rect.collidelist(treeColideArr) == -1:
         player.x += player.xChange
         player.y += player.yChange
     else:
@@ -156,32 +156,54 @@ while running:
     i = 0
     while i < len(people):
 
-        if people[i].distanceTravelled > 30:
-            chance = random.randint(0, 3)
-            people[i].direction = path[chance]
+        if people[i].distanceTravelled > 50:
+            chance = random.choice(path)
+            people[i].direction = chance
             people[i].distanceTravelled = 0
 
         if people[i].direction == "right":
-            people[i].xChange = 0.4
+            people[i].xChange = 1
             people[i].yChange = 0
         elif people[i].direction == "left":
-            people[i].xChange = -0.4
+            people[i].xChange = -1
             people[i].yChange = 0
         elif people[i].direction == "up":
-            people[i].yChange = -0.4
+            people[i].yChange = -1
             people[i].xChange = 0
         elif people[i].direction == "down":
-            people[i].yChange = 0.4
+            people[i].yChange = 1
             people[i].xChange = 0
-            
-        people[i].distanceTravelled += abs(people[i].xChange)
-        people[i].distanceTravelled += abs(people[i].yChange)
 
-
-        people[i].x += people[i].xChange
-        people[i].y += people[i].yChange
         people[i].rect.x += people[i].xChange
         people[i].rect.y += people[i].yChange
+        if people[i].rect.collidelist(treeColideArr) == -1:
+            people[i].distanceTravelled += abs(people[i].xChange)
+            people[i].distanceTravelled += abs(people[i].yChange)
+            people[i].x += people[i].xChange
+            people[i].y += people[i].yChange
+        else:
+            people[i].rect.x -= people[i].xChange
+            people[i].rect.y -= people[i].yChange
+            bad_direction = people[i].direction
+            while people[i].direction == bad_direction:
+                # print(bad_direction)
+                # print([direc for direc in path if direc != bad_direction])
+                chance = random.choice([direc for direc in path if direc != bad_direction])
+                people[i].direction = chance
+
+            
+        # people[i].distanceTravelled += abs(people[i].xChange)
+        # people[i].distanceTravelled += abs(people[i].yChange)
+
+
+
+        # people[i].x += people[i].xChange
+        # people[i].y += people[i].yChange
+        # people[i].rect.x += people[i].xChange
+        # people[i].rect.y += people[i].yChange
+
+        # if i is 0:
+            # print(str(people[i].x) +" "+ str(people[i].y)+" "+str(people[i].rect.x)+" "+str(people[i].rect.y))
 
         people[i].draw_citizen(screen)
 
@@ -207,7 +229,7 @@ while running:
             player.pick_up_masks()
         
         #Only show mask if it has been collected
-        if masks[i].collected is False:
+        if masks[i].collected == False:
             masks[i].drawMask(screen)
 
         i += 1
@@ -225,7 +247,7 @@ while running:
             player.pick_up_sanitizer()
         
         #Only show santiser if it has been collected
-        if sanitizers[i].collected is False:
+        if sanitizers[i].collected == False:
             sanitizers[i].drawSanitizer(screen)
 
         i += 1

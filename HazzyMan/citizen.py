@@ -18,4 +18,4 @@ class Citizen:
     def draw_citizen(self, screen):
 
         screen.blit(self.icon, (self.x, self.y))
-        pygame.draw.rect(screen, (255, 0, 0), self.rect)
+        # pygame.draw.rect(screen, (255, 0, 0), self.rect)
