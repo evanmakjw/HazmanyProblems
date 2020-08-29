@@ -12,6 +12,7 @@ class Hazman():
         self.y = 480
         self.xChange = 0
         self.yChange = 0
+        self.rect = pygame.Rect(370, 480, 32, 32)
 
         # Other attributes
         self.maskCount = 0
@@ -19,6 +20,8 @@ class Hazman():
 
     def draw_player(self, screen):
         screen.blit(self.icon, (self.x, self.y))
+        # Comment this line to show hazman image
+        pygame.draw.rect(screen, (255, 200, 0), self.rect)
 
     def give_mask(self):
         self.maskCount -= 1; 

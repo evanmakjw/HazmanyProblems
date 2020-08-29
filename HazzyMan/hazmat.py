@@ -107,19 +107,24 @@ while running:
     # Update player positon
     player.x += player.xChange
     player.y += player.yChange
-
+    player.rect.x += player.xChange
+    player.rect.y += player.yChange
     # Establish boundaries
     if player.x <= 0:
         player.x = 0
+        player.rect.x = 0
 
     elif player.x >= 768:
         player.x = 768
+        player.rect.x = 768
 
     if player.y <= 0:
         player.y = 0
+        player.rect.y = 0
 
     elif player.y >= 568:
         player.y = 568
+        player.rect.y = 568
 
     i = 0
     while i < 10:
@@ -139,6 +144,9 @@ while running:
     # Keep drawing the characters
     player.draw_player(screen)
     citizen.draw_citizen(screen)
+
+    # Uncomment if
+    # if player.rect.colliderect(add plaground.rect here):
 
     if player.x in range(playground.x - 10, playground.x + 10):
         playground.infected = True
