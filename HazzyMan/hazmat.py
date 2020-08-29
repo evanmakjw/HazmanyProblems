@@ -1,5 +1,10 @@
 import pygame
 import random
+from environment import (
+    Mask,
+    Tree,
+    Sanitizer
+)
 
 # Initialize the pygame
 pygame.init()
@@ -29,32 +34,11 @@ citizenY = random.randint(50, 150)
 citizenX_change = 0.4
 citizenY_change = 10
 
-
-class Mask:
-
-    def __init__(self):
-        self.x = random.randint(0, 800)
-        self.y = random.randint(0, 600)
-        self.icon = pygame.image.load("face-mask.png")
-    
-    def drawMask(self):
-        screen.blit(self.icon, (self.x, self.y))
-
 masks = []
 
 for i in range(10):
     temp = Mask()
     masks.append(temp)
-
-class Tree:
-
-    def __init__(self):
-        self.x = random.randint(0, 800)
-        self.y = random.randint(0, 600)
-        self.icon = pygame.image.load("tree.png")
-
-    def drawTree(self):
-        screen.blit(self.icon, (self.x, self.y))
 
 trees = []
 
@@ -62,23 +46,11 @@ for i in range(70):
     temp = Tree()
     trees.append(temp)
 
-class Sanitizer:
-
-    def __init__(self):
-        self.x = random.randint(0, 800)
-        self.y = random.randint(0, 600)
-        self.icon = pygame.image.load("hand-sanitizer.png")
-
-    def drawSanitizer(self):
-        screen.blit(self.icon, (self.x, self.y))
-
 sanitizers = []
 
 for i in range(10):
     temp = Sanitizer()
     sanitizers.append(temp)
-
-        
 
 
 def player(x, y):
@@ -162,17 +134,17 @@ while running:
 
     i = 0
     while i < len(masks):
-        masks[i].drawMask()
+        masks[i].drawMask(screen)
         i += 1
 
     i = 0
     while i < len(trees):
-        trees[i].drawTree()
+        trees[i].drawTree(screen)
         i += 1
 
     i = 0
     while i < len(sanitizers):
-        sanitizers[i].drawSanitizer()
+        sanitizers[i].drawSanitizer(screen)
         i += 1
 
 
