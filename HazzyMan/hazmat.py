@@ -3,15 +3,10 @@ import random
 from environment import (
     Mask,
     Tree,
-    Sanitizer,
-    Playground
+    Sanitizer
 )
 from hazman import Hazman
 from citizen import Citizen
-
-import os
-
-current_path = os.path.dirname(__file__) + "/"
 
 # Initialize the pygame
 pygame.init()
@@ -23,7 +18,7 @@ screen = pygame.display.set_mode((800, 600))
 background = pygame.image.load("ground.png")
 
 # Title & Icon
-pygame.display.set_caption("HazmanyProblems")
+pygame.display.set_caption("Hazzy Man")
 icon = pygame.image.load("hazmat.png")
 pygame.display.set_icon(icon)
 
@@ -50,7 +45,11 @@ for i in range(10):
     temp = Sanitizer()
     sanitizers.append(temp)
 
-playground = Playground()
+#people = []
+
+#for i in range(10):
+#    temp = Citizen()
+#    people.append(temp)
 
 # Main loop
 running = True
@@ -109,6 +108,19 @@ while running:
     elif player.y >= 568:
         player.y = 568
 
+    #i = 0
+    #while i < 10:
+    #    people[i].x += people[i].xChange
+    #    if people[i].x <= 0:
+    #        people[i].xChange = 0.4
+    #        people[i].y += people[i].yChange
+
+    #    elif people[i].x >= 768:
+    #        people[i].xChange = -0.4
+    #        people[i].y += people[i].yChange
+
+    #    people[i].draw_citizen(screen)
+
     # Do the same for the citizen
     citizen.x += citizen.xChange
 
@@ -139,8 +151,6 @@ while running:
         sanitizers[i].drawSanitizer(screen)
         i += 1
 
-
-    playground.drawPlayground(screen)
 
     # Always update your screen
     pygame.display.update()
