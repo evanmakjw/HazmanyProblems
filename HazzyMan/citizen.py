@@ -23,11 +23,11 @@ class Citizen:
     def draw_citizen(self, screen):
         if self.infected == False:
             screen.blit(self.iconNonCont, (self.x, self.y))
-            pygame.draw.rect(screen, (0, 255, 80), self.rect)
+            # pygame.draw.rect(screen, (0, 255, 80), self.rect)
 
         else:
             screen.blit(self.iconCont, (self.x,self.y))
-            pygame.draw.rect(screen, (255, 0, 0), self.rect)
+            # pygame.draw.rect(screen, (255, 0, 0), self.rect)
         # screen.blit(self.icon, (self.x, self.y))
     
 

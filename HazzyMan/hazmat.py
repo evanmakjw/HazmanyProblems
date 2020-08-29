@@ -255,11 +255,17 @@ while running:
 
     i = 0
     while i < len(people):
-        if people[i].rect.colliderect(player.rect):
+        if people[i].rect.colliderect(player.rect) and people[i].masked == False:
             if player.maskCount > 0:
                 player.maskCount -= 1
+                people[i].masked = True
+
+            if player.sanitizerCount > 0 and people[i].infected == True:
+                player.sanitizerCount -= 1
                 people[i].infected = False
-                people[i].draw_citizen(screen)
+
+            people[i].draw_citizen(screen)
+
         i += 1
 
     # Display other locations
