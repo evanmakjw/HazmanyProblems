@@ -1,13 +1,14 @@
 import pygame
 import os
 
+from settings import dir_path
 
 class Hazman():
 
     def __init__(self):
 
         # Position on the screen
-        self.icon = pygame.image.load("player.png")
+        self.icon = pygame.image.load(os.path.join(dir_path,"player.png"))
         self.x = 370
         self.y = 480
         self.xChange = 0
