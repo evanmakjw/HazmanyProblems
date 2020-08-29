@@ -1,4 +1,4 @@
-class hazman():
+class Hazman():
     def __init__(self):
         self.maskCount = 0
         self.sanitizerCount = 0
@@ -10,7 +10,6 @@ class hazman():
     def give_sanitizer(self):
         self.sanitizerCount -= 1; 
         
-
     def give_supplies(self, target):
         if self.maskCount > 0:
             self.give_mask(target)
@@ -36,7 +35,7 @@ class hazman():
         pass
     # def send_to_isolate(self):
 
-hazzy = hazman()
+hazzy = Hazman()
 hazzy.give_mask()
 print("hello")
     # body of the constructor
