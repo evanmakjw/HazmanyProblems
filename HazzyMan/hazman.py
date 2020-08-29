@@ -44,7 +44,7 @@ class Hazman():
 
 
     def pick_up_masks(self):
-        self.maskCount += 5; 
+        self.maskCount += 5 
 
     def pick_up_sanitiser(self):
         self.sanitizerCount+= 5

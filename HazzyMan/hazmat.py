@@ -202,6 +202,7 @@ while running:
         #If player goes over the mask, collect it
         if masks[i].rect.colliderect(player.rect):
             masks[i].collected = True
+            player.pick_up_masks()
         
         #Only show mask if it has been collected
         if masks[i].collected is False:
@@ -219,6 +220,7 @@ while running:
         #If player goes over the saniriser, collect it
         if sanitizers[i].rect.colliderect(player.rect):
             sanitizers[i].collected = True
+            player.pick_up_sanitizer()
         
         #Only show santiser if it has been collected
         if sanitizers[i].collected is False:
