@@ -106,19 +106,16 @@ while running:
             if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                 player.yChange = 0
 
-    # Update player positon
-    # for event in pygame.event.get():
-        # if player.rect.collidelist(treeColideArr) is -1:
-    player.x += player.xChange
-    player.y += player.yChange
+
+    #Testing whether player bumps tree and if not move the player
     player.rect.x += player.xChange
     player.rect.y += player.yChange
-        # else:
-        #     if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-        #         player.xChange = 0
-        #     if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
-        #         player.yChange = 0
-
+    if player.rect.collidelist(treeColideArr) is -1:
+        player.x += player.xChange
+        player.y += player.yChange
+    else:
+        player.rect.x -= player.xChange
+        player.rect.y -= player.yChange
 
     # Establish boundaries
     if player.x <= 0:

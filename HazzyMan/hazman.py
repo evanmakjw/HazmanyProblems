@@ -9,11 +9,11 @@ class Hazman():
 
         # Position on the screen
         self.icon = pygame.image.load(os.path.join(dir_path,"player.png"))
-        self.x = 370
+        self.x = 400
         self.y = 480
         self.xChange = 0
         self.yChange = 0
-        self.rect = pygame.Rect(370, 480, 32, 32)
+        self.rect = pygame.Rect(self.x, self.y, 32, 32)
 
         # Other attributes
         self.maskCount = 0
