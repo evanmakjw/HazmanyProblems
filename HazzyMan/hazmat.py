@@ -24,7 +24,7 @@ background = pygame.image.load("ground.png")
 
 # Title & Icon
 pygame.display.set_caption("HazmanyProblems")
-icon = pygame.image.load(current_path+"hazmat.png")
+icon = pygame.image.load("hazmat.png")
 pygame.display.set_icon(icon)
 
 # Create player and citizen
