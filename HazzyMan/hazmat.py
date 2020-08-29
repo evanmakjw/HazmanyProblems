@@ -180,6 +180,8 @@ while running:
 
         people[i].x += people[i].xChange
         people[i].y += people[i].yChange
+        people[i].rect.x += people[i].xChange
+        people[i].rect.y += people[i].yChange
 
         people[i].draw_citizen(screen)
 
