@@ -53,9 +53,9 @@ class School:
     def __init__(self):
         self.x = 60
         self.y = 80
-       # self.iconCont = pygame.image.load("playground_c.png")
-        #self.iconNonCont = pygame.image.load("playground_nc.png")
-        self.infected = True
+        self.iconCont = pygame.image.load("school_c.png")
+        self.iconNonCont = pygame.image.load("school_nc.png")
+        self.infected = False
     
     def drawSchool(self, screen):
         if self.infected == False:

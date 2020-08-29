@@ -140,6 +140,9 @@ while running:
     player.draw_player(screen)
     citizen.draw_citizen(screen)
 
+    if player.x in range(playground.x - 10, playground.x + 10):
+        playground.infected = True
+
     i = 0
     while i < len(masks):
         masks[i].drawMask(screen)
