@@ -142,9 +142,8 @@ while running:
     player.draw_player(screen)
 
     # Uncomment if
-    # if player.rect.colliderect(add plaground.rect here):
-
-    if player.x in range(playground.x - 10, playground.x + 10):
+    if player.rect.colliderect(playground.rect):
+    # if player.x in range(playground.x - 10, playground.x + 10):
         playground.infected = True
 
     i = 0
