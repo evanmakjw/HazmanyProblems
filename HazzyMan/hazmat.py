@@ -96,6 +96,12 @@ while running:
     elif player.x >= 768:
         player.x = 768
 
+    if player.y <= 0:
+        player.y = 0
+
+    elif player.y >= 568:
+        player.y = 568
+
     # Do the same for the citizen
     citizen.x += citizen.xChange
 
