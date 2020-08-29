@@ -1,8 +1,22 @@
+import pygame
+
 class Hazman():
+
     def __init__(self):
+
+        # Position on the screen
+        self.icon = pygame.image.load("player.png")
+        self.x = 370
+        self.y = 480
+        self.xChange = 0
+        self.yChange = 0
+
+        # Other attributes
         self.maskCount = 0
         self.sanitizerCount = 0
 
+    def draw_player(self, screen):
+        screen.blit(self.icon, (self.x, self.y))
 
     def give_mask(self):
         self.maskCount -= 1; 
@@ -27,16 +41,16 @@ class Hazman():
         self.maskCount += 5; 
 
     def pick_up_sanitiser(self):
-        self.sanitizerCount+= 5;
+        self.sanitizerCount+= 5
 
     def clean_object(self, obj):
-        obj.decontaminate();
+        obj.decontaminate()
 
     def test_citizen(self):
         pass
     # def send_to_isolate(self):
 
-hazzy = Hazman()
-hazzy.give_mask()
-print("hello")
+#hazzy = Hazman()
+#hazzy.give_mask()
+#print("hello")
     # body of the constructor
