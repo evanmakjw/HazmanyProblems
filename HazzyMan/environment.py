@@ -39,10 +39,10 @@ class Playground:
         self.y = 10
         self.iconCont = pygame.image.load("playground_c.png")
         self.iconNonCont = pygame.image.load("playground_nc.png")
-        self.infected = True
+        self.infected = False
     
     def drawPlayground(self, screen):
-        if self.infected == False:
+        if self.infected is False:
             screen.blit(self.iconNonCont, (self.x, self.y))
         else:
             screen.blit(self.iconCont, (self.x,self.y))

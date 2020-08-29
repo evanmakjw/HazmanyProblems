@@ -3,7 +3,8 @@ import random
 from environment import (
     Mask,
     Tree,
-    Sanitizer
+    Sanitizer,
+    Playground
 )
 from hazman import Hazman
 from citizen import Citizen
@@ -25,6 +26,9 @@ pygame.display.set_icon(icon)
 # Create player and citizen
 player = Hazman()
 citizen = Citizen()
+
+#Create playground
+playground = Playground()
 
 # Create other interactable objects
 masks = []
@@ -150,6 +154,8 @@ while running:
     while i < len(sanitizers):
         sanitizers[i].drawSanitizer(screen)
         i += 1
+
+    playground.drawPlayground(screen)
 
 
     # Always update your screen
