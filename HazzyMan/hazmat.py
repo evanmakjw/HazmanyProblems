@@ -3,7 +3,8 @@ import random
 from environment import (
     Mask,
     Tree,
-    Sanitizer
+    Sanitizer,
+    Playground
 )
 from hazman import Hazman
 from citizen import Citizen
@@ -48,6 +49,8 @@ sanitizers = []
 for i in range(10):
     temp = Sanitizer()
     sanitizers.append(temp)
+
+playground = Playground()
 
 # Main loop
 running = True
@@ -136,6 +139,8 @@ while running:
         sanitizers[i].drawSanitizer(screen)
         i += 1
 
+
+    playground.drawPlayground(screen)
 
     # Always update your screen
     pygame.display.update()

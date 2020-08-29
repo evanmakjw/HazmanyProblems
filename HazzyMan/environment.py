@@ -31,3 +31,19 @@ class Sanitizer:
 
     def drawSanitizer(self, screen):
         screen.blit(self.icon, (self.x, self.y))
+
+class Playground:
+    
+    def __init__(self):
+        self.x = 10
+        self.y = 10
+        self.iconCont = pygame.image.load("playground_c.png")
+        self.iconNonCont = pygame.image.load("playground_nc.png")
+        self.infected = True
+    
+    def drawPlayground(self, screen):
+        if self.infected == False:
+            screen.blit(self.iconNonCont, (self.x, self.y))
+        else:
+            screen.blit(self.iconCont, (self.x,self.y))
+
