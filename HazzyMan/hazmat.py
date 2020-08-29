@@ -1,10 +1,7 @@
 import pygame
 import random
-<<<<<<< Updated upstream
-import time
-=======
 import os
->>>>>>> Stashed changes
+
 from environment import (
     Mask,
     Tree,
@@ -18,10 +15,7 @@ from trees import (
     treexcor,
     treeycor
 )
-<<<<<<< Updated upstream
-=======
 from settings import dir_path
->>>>>>> Stashed changes
 
 # Initialize the pygame
 pygame.init()
@@ -113,14 +107,6 @@ while running:
                 player.yChange = 0
 
     # Update player positon
-<<<<<<< Updated upstream
-    player.x += player.xChange
-    player.y += player.yChange
-    player.rect.x += player.xChange
-    player.rect.y += player.yChange
-
-    # Establish boundaries for the player
-=======
     for event in pygame.event.get():
         if player.rect.collidelist(treeColideArr) is -1:
             player.x += player.xChange
@@ -135,7 +121,6 @@ while running:
 
 
     # Establish boundaries
->>>>>>> Stashed changes
     if player.x <= 0:
         player.x = 0
         player.rect.x = 0
