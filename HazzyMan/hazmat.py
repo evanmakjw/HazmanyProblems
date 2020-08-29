@@ -7,6 +7,9 @@ from environment import (
 )
 from hazman import Hazman
 from citizen import Citizen
+import os
+
+current_path = os.path.dirname(__file__) + "/"
 
 # Initialize the pygame
 pygame.init()
@@ -15,11 +18,11 @@ pygame.init()
 screen = pygame.display.set_mode((800, 600))
 
 # Background
-background = pygame.image.load("ground.png")
+background = pygame.image.load(current_path+"ground.png")
 
 # Title & Icon
 pygame.display.set_caption("Hazzy Man")
-icon = pygame.image.load("hazmat.png")
+icon = pygame.image.load(current_path+"hazmat.png")
 pygame.display.set_icon(icon)
 
 # Create player and citizen
