@@ -24,6 +24,7 @@ class Tree:
 
     def drawTree(self, screen):
         screen.blit(self.icon, (self.x, self.y))
+        pygame.draw.rect(screen, (0, 255, 0), self.rect)
 
 class Sanitizer:
 

@@ -33,7 +33,7 @@ pygame.display.set_icon(icon)
 
 # Create player and citizen
 player = Hazman()
-citizen = Citizen()
+# citizen = Citizen()
 
 # Other locations
 playground = Playground()
@@ -62,9 +62,21 @@ for i in range(10):
 
 people = []
 
-for i in range(30):
-    temp = Citizen()
-    people.append(temp)
+numInfected = 1
+numCitizens = 30
+
+nonInfectedCitizens = []
+while len(people) < numCitizens:
+    if len(people) < numInfected:
+        people.append(Citizen(True))
+    else:
+        people.append(Citizen(False))
+
+print(people[0].infected)
+print(people[1].infected)
+# for i in range(30):
+#     temp = Citizen()
+#     people.append(temp)
 
 # Main loop
 running = True
@@ -156,7 +168,7 @@ while running:
     i = 0
     while i < len(people):
 
-        if people[i].distanceTravelled > 50:
+        if people[i].distanceTravelled > 100:
             chance = random.choice(path)
             people[i].direction = chance
             people[i].distanceTravelled = 0
@@ -181,6 +193,18 @@ while running:
             people[i].distanceTravelled += abs(people[i].yChange)
             people[i].x += people[i].xChange
             people[i].y += people[i].yChange
+        elif people[i].rect.x <= 0:
+             people[i].x = 0
+             people[i].rect.x = 0
+        elif people[i].x >= 768:
+            people[i].x = 768
+            people[i].x = 768
+        elif people[i].rect.y <= 0:
+            people[i].y = 0
+            people[i].rect.y = 0
+        elif people[i].y >= 568:
+            people[i].y = 568
+            people[i].y = 568
         else:
             people[i].rect.x -= people[i].xChange
             people[i].rect.y -= people[i].yChange
@@ -191,7 +215,18 @@ while running:
                 chance = random.choice([direc for direc in path if direc != bad_direction])
                 people[i].direction = chance
 
-            
+        # print([ppl.rect for ppl in people if ppl is not people[i]])
+        if people[i].rect.collidelist([ppl.rect for ppl in people if ppl is not people[i]]) != -1:
+            contactIndex = people[i].rect.collidelist([ppl.rect for ppl in people if ppl is not people[i]])
+            if people[i].infected == True:
+                 if people[i].masked == False and people[contactIndex].masked == False:
+                    people[contactIndex].infected = True
+
+            elif people[i].infected == False: 
+                if people[i].masked == False and people[contactIndex].infected == True and people[contactIndex].masked == False:
+                    people[i].infected = True;
+
+            # else:
         # people[i].distanceTravelled += abs(people[i].xChange)
         # people[i].distanceTravelled += abs(people[i].yChange)
 
