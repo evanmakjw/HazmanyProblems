@@ -14,9 +14,6 @@ from trees import (
     treeycor
 )
 
-
-
-
 # Initialize the pygame
 pygame.init()
 
@@ -143,7 +140,6 @@ while running:
 
     # Keep drawing the characters
     player.draw_player(screen)
-    citizen.draw_citizen(screen)
 
     # Uncomment if
     # if player.rect.colliderect(add plaground.rect here):
