@@ -22,7 +22,7 @@ class Hazman():
     def draw_player(self, screen):
         screen.blit(self.icon, (self.x, self.y))
         # Comment this line to show hazman image
-        pygame.draw.rect(screen, (255, 200, 0), self.rect)
+        #pygame.draw.rect(screen, (255, 200, 0), self.rect)
 
     def give_mask(self):
         self.maskCount -= 1; 
