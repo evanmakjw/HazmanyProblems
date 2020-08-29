@@ -9,6 +9,7 @@ class Mask:
         self.y = random.randint(0, 600)
         self.icon = pygame.image.load(os.path.join(dir_path,"face-mask.png"))
         self.rect = pygame.Rect(self.x, self.y, 32, 32)
+        self.collected = False
 
     def drawMask(self, screen):
         screen.blit(self.icon, (self.x, self.y))
@@ -31,6 +32,7 @@ class Sanitizer:
         self.y = random.randint(0, 600)
         self.icon = pygame.image.load(os.path.join(dir_path,"hand-sanitizer.png"))
         self.rect = pygame.Rect(self.x, self.y, 32, 32)
+        self.collected = False
 
     def drawSanitizer(self, screen):
         screen.blit(self.icon, (self.x, self.y))

@@ -107,17 +107,17 @@ while running:
                 player.yChange = 0
 
     # Update player positon
-    for event in pygame.event.get():
-        if player.rect.collidelist(treeColideArr) is -1:
-            player.x += player.xChange
-            player.y += player.yChange
-            player.rect.x += player.xChange
-            player.rect.y += player.yChange
-        else:
-            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                player.xChange = 0
-            if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
-                player.yChange = 0
+    # for event in pygame.event.get():
+        # if player.rect.collidelist(treeColideArr) is -1:
+    player.x += player.xChange
+    player.y += player.yChange
+    player.rect.x += player.xChange
+    player.rect.y += player.yChange
+        # else:
+        #     if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+        #         player.xChange = 0
+        #     if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+        #         player.yChange = 0
 
 
     # Establish boundaries
@@ -156,18 +156,25 @@ while running:
     # Keep drawing the player
     player.draw_player(screen)
 
-    # Uncomment if
+    # If player collides with locations
     if player.rect.colliderect(playground.rect):
-    # if player.x in range(playground.x - 10, playground.x + 10):
         playground.infected = True
 
     if player.rect.colliderect(school.rect):
-    # if player.x in range(playground.x - 10, playground.x + 10):
         school.infected = True
+
 
     i = 0
     while i < len(masks):
-        masks[i].drawMask(screen)
+        
+        #If player goes over the mask, collect it
+        if masks[i].rect.colliderect(player.rect):
+            masks[i].collected = True
+        
+        #Only show mask if it has been collected
+        if masks[i].collected is False:
+            masks[i].drawMask(screen)
+
         i += 1
 
     i = 0
@@ -177,7 +184,14 @@ while running:
 
     i = 0
     while i < len(sanitizers):
-        sanitizers[i].drawSanitizer(screen)
+        #If player goes over the saniriser, collect it
+        if sanitizers[i].rect.colliderect(player.rect):
+            sanitizers[i].collected = True
+        
+        #Only show santiser if it has been collected
+        if sanitizers[i].collected is False:
+            sanitizers[i].drawSanitizer(screen)
+
         i += 1
 
     # Display other locations
