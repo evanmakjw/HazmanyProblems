@@ -25,13 +25,12 @@ class ECitizen():
 
     def draw_citizen(self, screen):
         screen.blit(self.icon, (self.x, self.y))
+        pygame.draw.rect(screen, (255, 0, 0), self.rect)
 
     # def change_direction(self):
     #     while True:
     #         direction  = random.choice(range(0,3))
     #         if direction ~= current_direction:
-
-
 
 
 
@@ -54,13 +53,22 @@ infectedIDArr = []
 notInfectedIDArr = []
 citizenArr = []
 
+# while infected ppl is less than num specified
 while len(infectedIDArr) < numInfected:
+
+    # choose a random index
     random_num = random.choice(range(0,10))
     print(random_num)
+
+    # if array is empty
     if not infectedIDArr:
         infectedIDArr.append(random_num)
+
+    # if the index has already been chosen
     elif random_num in infectedIDArr:
         continue
+
+    # otherwise 
     else:
         infectedIDArr.append(random_num)
 
